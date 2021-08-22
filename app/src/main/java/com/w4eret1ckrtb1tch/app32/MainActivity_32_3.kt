@@ -4,12 +4,19 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.ObservableBoolean
 import com.w4eret1ckrtb1tch.app32.databinding.ActivityMain323Binding
 import kotlin.random.Random
+
+fun getExRate(): Double {
+    return 75.50
+}
+
 
 class MainActivity_32_3 : AppCompatActivity() {
 
     private lateinit var countDownTimer: CountDownTimer
+    private var flag: ObservableBoolean = ObservableBoolean(true)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +33,16 @@ class MainActivity_32_3 : AppCompatActivity() {
                 )
             )
         binding.user = user
-        (binding.recyclerView.adapter) = StockAdapter(user.stockList)
+        binding.exRate = getExRate()
+        binding.function = {
+            flag.set(!flag.get())
+            if (flag.get()) {
+                countDownTimer.start()
+            } else countDownTimer.cancel()
+        }
+        binding.flag = flag
+
+        binding.recyclerView.adapter = StockAdapter(user.stockList)
         val random = Random(System.currentTimeMillis())
         countDownTimer = object : CountDownTimer(10_000L, 1000L) {
             override fun onTick(millisUntilFinished: Long) {

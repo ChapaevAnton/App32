@@ -6,7 +6,7 @@ import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.databinding.BindingAdapter
 
-class Stock(var name: String, private var _price: Int = 0, @DrawableRes val iconId: Int) :
+class Stock(var name: String, _price: Int = 0, @DrawableRes val iconId: Int) :
     BaseObservable() {
 
     @get:Bindable
@@ -18,7 +18,7 @@ class Stock(var name: String, private var _price: Int = 0, @DrawableRes val icon
 
 
     companion object {
-        @BindingAdapter("app:imageId")
+        @BindingAdapter("app:icon")
         @JvmStatic
         fun loadImage(view: ImageView, iconId: Int) {
             view.setImageResource(iconId)

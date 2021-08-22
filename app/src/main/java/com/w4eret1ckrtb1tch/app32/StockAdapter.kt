@@ -24,6 +24,7 @@ class StockAdapter(var data: List<Stock>) : RecyclerView.Adapter<StockAdapter.St
 
     override fun onBindViewHolder(holder: StockHolder, position: Int) {
         holder.binding.stock = data[position]
+        holder.binding.exRate = getExRate()
     }
 
     override fun getItemCount(): Int {

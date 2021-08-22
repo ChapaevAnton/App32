@@ -32,6 +32,7 @@ class OneFragment : Fragment() {
         binding.text2 = "DataBinding"
         binding.visibility2 = true
         //QUESTION зачем выполнять этот метод?
+        // Этот метод необходимо вызывать если все поля модели данных были изменены
         binding.notifyPropertyChanged(BR.text2)
         binding.notifyPropertyChanged(BR.visibility2)
 

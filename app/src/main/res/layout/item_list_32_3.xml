@@ -9,6 +9,10 @@
             name="stock"
             type="com.w4eret1ckrtb1tch.app32.Stock" />
 
+        <variable
+            name="ex_rate"
+            type="Double" />
+
     </data>
 
     <LinearLayout
@@ -21,7 +25,7 @@
             android:id="@+id/icon"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:imageId='@{stock.iconId}'
+            app:icon='@{stock.iconId}'
             tools:src="@tools:sample/avatars" />
 
         <TextView
@@ -38,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text='@{@string/ruble(stock.price)}'
+            android:text='@{@string/ruble(((double)stock.price)/ex_rate)}'
             android:textSize="25sp"
             tools:text="@tools:sample/last_names" />
     </LinearLayout>
