@@ -18,7 +18,7 @@ class Stock(var name: String, private var _price: Int = 0, @DrawableRes val icon
 
 
     companion object {
-        @BindingAdapter("imageId")
+        @BindingAdapter("app:imageId")
         @JvmStatic
         fun loadImage(view: ImageView, iconId: Int) {
             view.setImageResource(iconId)
