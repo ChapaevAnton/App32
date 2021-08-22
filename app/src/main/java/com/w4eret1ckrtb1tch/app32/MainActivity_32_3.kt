@@ -3,8 +3,7 @@ package com.w4eret1ckrtb1tch.app32
 import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ObservableBoolean
+import androidx.databinding.*
 import com.w4eret1ckrtb1tch.app32.databinding.ActivityMain323Binding
 import kotlin.random.Random
 
@@ -15,8 +14,22 @@ fun getExRate(): Double {
 
 class MainActivity_32_3 : AppCompatActivity() {
 
+
     private lateinit var countDownTimer: CountDownTimer
+
+    // TODO: 22.08.2021 32.5. Data Binding Observables 
     private var flag: ObservableBoolean = ObservableBoolean(true)
+    private val client: ObservableField<Client> = ObservableField(Client("Nik", 10_000))
+    private var clients: ObservableList<Client> =
+        ObservableArrayList<Client>().apply {
+            addAll(
+                arrayListOf(
+                    Client("Maik", 1000),
+                    Client("Mati", 2000),
+                    Client("Mary", 3000)
+                )
+            )
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +38,16 @@ class MainActivity_32_3 : AppCompatActivity() {
             this,
             R.layout.activity_main_32_3
         )
+
+        // TODO: 22.08.2021  32.5. Data Binding Observables
+        binding.client = client
+        client.get()?.cash = 120
+        binding.clients = clients
+
+        clients.add(Client("Ivan", 10_000))
+        binding.index = 2
+
+
         val user =
             User(
                 50_000, arrayListOf(

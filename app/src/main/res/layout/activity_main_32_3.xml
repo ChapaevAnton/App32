@@ -6,8 +6,16 @@
     <data>
 
         <import
-            alias="obsBoolean"
+            alias="observableBoolean"
             type="androidx.databinding.ObservableBoolean" />
+
+        <import
+            alias="Client"
+            type="com.w4eret1ckrtb1tch.app32.Client" />
+
+        <import
+            alias="ObservableList"
+            type="androidx.databinding.ObservableList" />
 
         <variable
             name="user"
@@ -23,12 +31,35 @@
 
         <variable
             name="flag"
-            type="obsBoolean" />
+            type="observableBoolean" />
+
+        <variable
+            name="client"
+            type="androidx.databinding.ObservableField&lt;Client>" />
+
+        <variable
+            name="index"
+            type="Integer" />
+
+        <variable
+            name="clients"
+            type="ObservableList&lt;Client>" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/client_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:client="@{clients[index]}"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/lorem" />
 
         <Button
             android:id="@+id/button"
@@ -39,7 +70,7 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/client_list" />
 
         <TextView
             android:id="@+id/cash"
