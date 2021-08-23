@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.w4eret1ckrtb1tch.app32.databinding.ItemList323Binding
 
-class StockAdapter(var data: List<Stock>) : RecyclerView.Adapter<StockAdapter.StockHolder>() {
+class StockAdapter(var data: List<StockObservable>) : RecyclerView.Adapter<StockAdapter.StockHolder>() {
 
     inner class StockHolder(var binding: ItemList323Binding) : RecyclerView.ViewHolder(binding.root)
 
@@ -23,7 +23,7 @@ class StockAdapter(var data: List<Stock>) : RecyclerView.Adapter<StockAdapter.St
     }
 
     override fun onBindViewHolder(holder: StockHolder, position: Int) {
-        holder.binding.stock = data[position]
+        holder.binding.stockObservable = data[position]
         holder.binding.exRate = getExRate()
     }
 

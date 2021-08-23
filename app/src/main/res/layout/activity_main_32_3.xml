@@ -17,9 +17,21 @@
             alias="ObservableList"
             type="androidx.databinding.ObservableList" />
 
+        <import
+            alias="ObservableMap"
+            type="androidx.databinding.ObservableMap" />
+
+        <import
+            alias="UserObservable"
+            type="com.w4eret1ckrtb1tch.app32.UserObservable" />
+
         <variable
             name="user"
             type="com.w4eret1ckrtb1tch.app32.User" />
+
+        <variable
+            name="user_observable"
+            type="androidx.databinding.ObservableField&lt;UserObservable>" />
 
         <variable
             name="ex_rate"
@@ -42,8 +54,12 @@
             type="Integer" />
 
         <variable
-            name="clients"
+            name="client_list"
             type="ObservableList&lt;Client>" />
+
+        <variable
+            name="client_map"
+            type="ObservableMap&lt;Integer,Client&gt;" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,14 +67,25 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/client_list"
+            android:id="@+id/clients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:client="@{clients[index]}"
+            android:text="@{client_list[index].toString()}"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
+            android:id="@+id/clients_map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{client_map[index].toString()}"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clients"
             tools:text="@tools:sample/lorem" />
 
         <Button
@@ -70,18 +97,31 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/client_list" />
+            app:layout_constraintTop_toBottomOf="@+id/clients_map" />
+
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text='@{user_observable.nameObservable}'
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button"
+            tools:text="@tools:sample/lorem" />
 
         <TextView
             android:id="@+id/cash"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text='@{@string/ruble(((double)user.cash)/ex_rate)}'
+            android:text='@{@string/ruble(((double)user_observable.cashObservable)/ex_rate)}'
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button"
+            app:layout_constraintTop_toBottomOf="@+id/name"
             tools:text="@tools:sample/lorem" />
 
         <androidx.recyclerview.widget.RecyclerView
