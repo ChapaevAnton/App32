@@ -25,6 +25,10 @@
             alias="UserObservable"
             type="com.w4eret1ckrtb1tch.app32.UserObservable" />
 
+        <import
+            alias="Converter"
+            type="com.w4eret1ckrtb1tch.app32.Converter" />
+
         <variable
             name="user"
             type="com.w4eret1ckrtb1tch.app32.User" />
@@ -117,7 +121,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text='@{@string/ruble(((double)user_observable.cashObservable)/ex_rate)}'
+            android:text='@{Converter.doubleToString(Converter.rubleToDollar(user_observable.cashObservable,ex_rate))}'
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
