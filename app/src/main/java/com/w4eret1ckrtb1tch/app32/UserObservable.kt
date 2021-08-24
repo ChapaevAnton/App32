@@ -1,6 +1,7 @@
 package com.w4eret1ckrtb1tch.app32
 
 import androidx.databinding.*
+import androidx.databinding.adapters.TextViewBindingAdapter
 
 class UserObservable(_name: String, _cash: Int, _stockList: ArrayList<StockObservable>) {
 
